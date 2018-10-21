@@ -5,9 +5,10 @@ Feel free to fork, change, modify and re-use it.
 
 ## Installation
 
-    git clone https://github.com/rosario/kasper.git
+    git clone https://github.com/sweetppro/kasper.git
     cd kasper
     gem install jekyll
+    gem install jekyll-paginate
     gem install pygments.rb
 
 ## How to use it

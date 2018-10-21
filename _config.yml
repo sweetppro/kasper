@@ -1,16 +1,17 @@
-name: Your New Jekyll Site
-description: Blogging about stuffs
-meta_description: "Your New Jekyll Site, Blogging about stuffs"
+name: SweetP Productions Blog
+title: Privacy Tips 
+description: Useful guides and helpful tutorials 
+meta_description: "Your Privacy is your business"
+permalink: /:categories/:title/
 
 markdown: kramdown
 highlighter: pygments
 logo: false
 paginate: 15
 baseurl: /
-domain_name: 'http://yourblog-domain.com'
-google_analytics: 'UA-XXXXXXXX-X'
-gems: [jekyll-paginate]
+domain_name: 'https://sweetpproductions.com/blog'
+plugins: [jekyll-paginate]
 
 # Details for the RSS feed generator
-url:            'blog url'
-author:         'Your Name'
+url:            'https://sweetpproductions.com/blog'
+author:         'SweetP Productions'

@@ -1,0 +1,83 @@
+---
+layout: default
+archive: false
+permalink: /categories/
+title: Categories
+---
+
+<header class="main-header post-head {% if page.cover %}" style="background-image: url({{ page.cover }}) {%else%}no-cover{% endif %}">
+    <nav class="main-nav {% if page.cover %} overlay {% endif %} clearfix">
+        <a class="back-button icon-arrow-left" href="{{ site.baseurl }}">Home</a>
+        <a class="subscribe-button icon-feed" href="{{ site.baseurl }}feed.xml">Subscribe</a>
+    </nav>
+</header>
+
+<div id="wrapper">
+    <div id="main">
+        <main class="content" role="main">
+            <div id="archives">
+                <h1 class="category-header">Categories</h1>
+                <div class="post-categories category">
+                    {% for category in site.categories %}
+                    {% capture category_name %}{{ category | first }}{% endcapture %}
+                    <a href="{{ site.baseurl }}categories/#{{ category_name|slugify }}">{{category_name}}</a>
+                    {% endfor %}
+                </div>
+
+                {% for category in site.categories %}
+                {% capture category_name %}{{ category | first }}{% endcapture %}
+                <a name="{{ category_name | slugify }}"></a>
+                {% if forloop.first == true %}
+                <div class="archive-group no_top_margin">
+                {% else %}
+                <div class="archive-group">
+                {% endif %}
+                    <div class="category-head">
+                        <h1>: {{ category_name }}</h1>
+                        <div class="category-bottom-border"></div>
+                    </div>
+
+                    {% for post in site.categories[category_name] %}
+                    <article class="post">
+                        <header class="post-header">
+                            <h2 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
+                        </header>
+                        <section class="post-excerpt">
+                            {{ post.excerpt }} <a class="read-more" href="{{ post.url }}">&raquo;</a>
+                        </section>
+                        <footer class="post-meta">
+                            {% if site.author %}
+                            <img class="author-thumb" src="/assets/images/profile.png" alt="Author's profile picture"
+                                nopin="nopin" />
+                            {{ site.author }}
+                            {% endif %}
+                            {% if post.categories.size > 0 %}
+                            <div class="post-categories">
+                                <p>
+                                    {% if post %}
+                                    {% assign categories = post.categories %}
+                                    {% else %}
+                                    {% assign categories = page.categories %}
+                                    {% endif %}
+                                    {% for category in categories %}
+                                    <a href="{{ site.baseurl }}categories/#{{ category|slugify }}">{{category}}</a>
+                                    {% unless forloop.last %}&nbsp;{% endunless %}
+                                    {% endfor %}
+                                </p>
+                            </div>
+                            {% endif %}
+                            <div class="extra-meta">
+                                <time class="post-date" datetime="{{ post.date | date:"%Y-%m-%d" }}">
+                                    {{ post.date | date_to_string }}
+                                </time>
+                                {% include read_time.html content=post.content %}
+                            </div>
+                        </footer>
+                    </article>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+            </div>
+        </main>
+    </div>
+</div>
