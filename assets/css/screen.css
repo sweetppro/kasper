@@ -18,7 +18,8 @@
     9.  Footer
     10. Media Queries (Tablet)
     11. Media Queries (Mobile)
-    12. Animations
+    12. Media Queries - iphone menu title
+    13. Animations
 
 */
 
@@ -1166,11 +1167,32 @@ p.bio {
     color: #595f66
 }
 
+.post-content a:link,
+.post-content a:hover,
+.post-content a:visited,
 p.bio a:link,
 p.bio a:hover,
 p.bio a:visited {
     color: #429c46;
     text-decoration: none;
+}
+
+.post-content h3,
+.post-content h4 {
+    margin-top: 4em;
+}
+
+.post-content h4:first-of-type,
+h3+h4 {
+    margin-top: 0 !important;
+}
+
+pre code {
+    font-size: 90%;
+}
+
+pre {
+    margin: -1.5em 0 1.75em 0;
 }
 
 .post-template .post-header {
@@ -1207,15 +1229,6 @@ p.bio a:visited {
 /* Kill that stylish little circle that was on the border, too */
 .post-template .post:after {
     display: none;
-}
-
-/* Keep images centred and within the bounds of the post-width */
-.post-content img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    margin: 0 auto;
-    padding: 0.6em 0;
 }
 
 /* Break out larger images to be wider than the main text column
@@ -1376,6 +1389,38 @@ p.bio a:visited {
 .subscribe:hover .tooltip {
     opacity: 1;
     top: -33px;
+}
+
+img+em {
+    text-align: center;
+    display: block;
+    font-size: 80%;
+}
+
+.float-right {
+    display: block;
+    margin-left: 2em !important;
+    float: right;
+}
+
+.float-left {
+    display: block;
+    margin-right: 2em !important;
+    float: left;
+}
+
+.post-content img {
+    max-width: 300px !important;
+    width: 100% !important;
+    margin: auto !important;
+    display: block !important;
+    height: auto;
+    padding: 0.6em 0;
+}
+
+.float-right p,
+.float-left p {
+    text-align: center;
 }
 
 /* ==========================================================================
@@ -1787,17 +1832,14 @@ p.bio a:visited {
 @media only screen and (max-width: 508px) {
 
     .main-nav {
-        padding: 65px 125px 0 45px;
-        margin-top: 60px !important;
+        padding: 0;
+        margin-bottom: 2rem;
+        border-bottom: #e0e4e7 1px solid;
     }
 
     .main-nav .subscribe-button {
-        margin-top: 0;
-    }
-
-    .subscribe-button {
+        margin-top: 60px;
         float: left;
-        margin: 0;
     }
 
     .main-header {
@@ -1813,12 +1855,6 @@ p.bio a:visited {
         max-height: 20%;
         min-height: 160px;
         padding: 10% 0;
-    }
-
-    .main-nav {
-        padding: 0;
-        margin-bottom: 2rem;
-        border-bottom: #e0e4e7 1px solid;
     }
 
     .blog-logo {
@@ -1847,6 +1883,7 @@ p.bio a:visited {
 
     .back-button {
         padding: 0 15px 0 10px;
+        margin-top: 60px;
     }
 
     .subscribe-button {
@@ -2069,9 +2106,74 @@ p.bio a:visited {
 
 }
 
+/* ==========================================================================
+   12. Media Queries - iPhone menu title than 500px
+   ========================================================================== */
+@media screen and (max-width: 414px) {
+
+    .float-right {
+        display: block;
+        margin: auto !important;
+        float: none;
+    }
+    
+    .float-left {
+        display: block;
+        margin: auto !important;
+        float: none;
+    }
+
+
+    label .title_light {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+    }
+
+    label .title_light a {
+        font-size: 24px !important;
+    }
+
+    label .title_light a::before {
+        width: 19px;
+        height: 24px;
+        display: block;
+        float: left;
+        margin: 5px 4px 0 0;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    label .title_light a {
+        font-size: 20px !important;
+    }
+
+    label .title_light a::before {
+        width: 16px;
+        height: 20px;
+        display: block;
+        float: left;
+        margin: 4px 3px 0 0;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    label .title_light a {
+        font-size: 15px !important;
+    }
+
+    label .title_light a::before {
+        width: 12px;
+        height: 15px;
+        display: block;
+        float: left;
+        margin: 3px 2px 0 0;
+    }
+}
+
 
 /* ==========================================================================
-   12. Animations
+   13. Animations
    ========================================================================== */
 
 /* Used to fade in title/desc on the home page */
